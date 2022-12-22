@@ -1,0 +1,25 @@
+<div class="wrapper" [ngStyle] = "{'background-color': 'white'}">
+    <app-nav></app-nav>
+
+    <form class="form" (ngSubmit)="onSubmit()" #form>
+        <div [formGroup]="myForm">
+
+        <input [ngStyle]="{'border': myForm.get('fullName').touched === true && 
+        myForm.get('fullName').valid === false ? 'solid red 2px' : 'solid black 1px' }" 
+        type="text" placeholder="Full name" formControlName="fullName"> <br>
+        <label *ngIf="myForm.get('fullName').touched && !myForm.get('fullName').valid">
+        Full Name field is required</label> <br>
+
+        <input [ngStyle]="{'border': myForm.get('email').touched === true && 
+        myForm.get('email').valid === false ? 'solid red 2px' : 'solid black 1px' }" type="email" placeholder="Email" formControlName="email"> <br> 
+        <label *ngIf="myForm.get('email').touched && !myForm.get('email').valid">Email is required</label> <br>
+
+        <input [ngStyle]="{'border': myForm.get('comment').touched === true && 
+        myForm.get('comment').valid === false ? 'solid red 2px' : 'solid black 1px' }" type="textarea" placeholder="Comment" formControlName="comment"> <br>
+        <label *ngIf="myForm.get('comment').touched && !myForm.get('comment').valid">Comment is required</label> <br>
+        <label *ngIf="myForm.get('comment').touched && myForm.get('comment').errors?.minlength">Comment field requires atleast 20 characters</label> <br> 
+
+        <input [ngStyle]="{'border': myForm.valid ? 'solid green 2px': 'solid red 2px'}" type="submit" value="Send" [disabled]="!myForm.valid">
+        </div>   
+    </form>
+</div>
