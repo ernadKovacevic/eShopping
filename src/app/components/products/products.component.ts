@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/Models/product.model';
+import { ProductsService } from 'src/app/Services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -9,14 +11,14 @@ export class ProductsComponent implements OnInit {
   filteringValue: string = "All";
   searchingValue: string = "";
 
-  products = [
-    {id: 1, name: "Minimalist Analog watch", price:109, color: "Black", available: "Available"},
+  products : Array<Product> = [];
+
+  /*     {id: 1, name: "Minimalist Analog watch", price:109, color: "Black", available: "Available"},
     {id: 2, name: "HD smart TV", price:3339, color: "Black", available: "Available"},
     {id: 3, name: "Apple Iphone 12", price:1850, color: "Black", available: "Available"},
     {id: 4, name: "LG washing machine", price:1765, color: "White", available: "Available"},
     {id: 5, name: "LG refrigerator", price:2810, color: "White", available: "Not Available"},
-    {id: 6, name: "Ryzen 7", price:2145, color: "White", available: "Not Available"}
-  ];
+    {id: 6, name: "Ryzen 7", price:2145, color: "White", available: "Not Available"} */
  
   displayDetails : boolean = true;
 
@@ -46,10 +48,12 @@ export class ProductsComponent implements OnInit {
     this.searchingValue = data;
   }
 
-  constructor() { }
+  constructor(private productsService : ProductsService){}
 
   ngOnInit(): void {
-    
+    this.productsService.getProducts().subscribe((data)=>{
+      this.products = data;
+    })
   }
 
 }
