@@ -12,20 +12,26 @@ export class ProductsComponent implements OnInit {
   searchingValue: string = "";
 
   products : Array<Product> = [];
+  
+  index : number | null = null;
 
-  /*     {id: 1, name: "Minimalist Analog watch", price:109, color: "Black", available: "Available"},
-    {id: 2, name: "HD smart TV", price:3339, color: "Black", available: "Available"},
-    {id: 3, name: "Apple Iphone 12", price:1850, color: "Black", available: "Available"},
-    {id: 4, name: "LG washing machine", price:1765, color: "White", available: "Available"},
-    {id: 5, name: "LG refrigerator", price:2810, color: "White", available: "Not Available"},
-    {id: 6, name: "Ryzen 7", price:2145, color: "White", available: "Not Available"} */
- 
-  displayDetails : boolean = true;
+  buttonDetailName = "Show Details";
 
-  showDetails(event: any){
-    console.log(event.target);
+  showDetails(id : number){
 
-    this.displayDetails = !this.displayDetails;
+    if(this.index === null){
+      this.index = id+1;
+    }else{
+      if(this.index != (id+1)){
+        this.index = id + 1;
+      }else{
+        this.index = null; 
+      }
+       
+    }
+
+    console.log(this.index);
+
   }
 
   getAllProducts(){
@@ -46,6 +52,14 @@ export class ProductsComponent implements OnInit {
 
   searchProduct(data: string){
     this.searchingValue = data;
+  }
+
+  onBuy(){
+
+  }
+
+  onNotify(){
+    alert("Admin team is notified. Thank you for your help");
   }
 
   constructor(private productsService : ProductsService){}

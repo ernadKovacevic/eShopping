@@ -28,7 +28,8 @@
 
 .options{
     width: 220px;
-    margin-left: 80px
+    margin-left: 600px;
+    position: absolute;
 }
 
 .btn{

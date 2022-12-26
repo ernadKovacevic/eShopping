@@ -7,7 +7,7 @@
     [notAvailable]="getNotAvailableProducts()"
     (changeFilterValue)="onFilterRadioButtonChange($event)"></app-filter>
 </div>
-<ng-container *ngFor="let product of products">
+<ng-container *ngFor="let product of products; let i = index">
 <div *ngIf="(filteringValue === 'All' || filteringValue === product.available)">
 <div *ngIf="(searchingValue === '' || product.name.includes(searchingValue))">  
     <div class="product-container" [ngStyle]="{backgroundColor: product.available === 'Available'
@@ -15,22 +15,25 @@
         <div class="image-container"></div>
         <div>
             <div class="name-container"><h6>{{product.name}}</h6></div>
-            <div class="detail-container">
+            <div class="detail-container" *ngIf="product.id === index">
                 <div class="details" [ngStyle]="{color: product.available === 'Available'
                 ? 'Green' : 'Red' }">{{product.available}}</div>
-                <div class="details" ><b>Price:</b>{{product.price}}</div>
-                <div class="details" ><b>Color</b>{{product.color}}</div>
+                <div class="details" ><b>Price: </b>{{product.price}}</div>
+                <div class="details" ><b>Color: </b>{{product.color}}</div>
             </div>
         </div>
         <div class="options">
-            <button class="btn btn-success" (click)="showDetails($event)">Show details</button>
-            <button class="btn btn-warning" *ngIf="product.available != 'Not Available'; else notifyme">Buy Now</button>
+            <button class="btn btn-success" (click)="showDetails(i)" *ngIf="product.id === index; else hide">Hide Details</button>
+             <ng-template #hide>
+                <button class="btn btn-success" (click)="showDetails(i)">Show Details</button>
+            </ng-template> 
+            <button class="btn btn-warning" *ngIf="product.available != 'Not Available'; else notifyme" (click)="onBuy()">Buy Now</button>
             <ng-template #notifyme>
-                <button class="btn btn-danger">Notify me</button>
+                <button class="btn btn-danger" (click)="onNotify()">Notify me</button>
             </ng-template>
         </div>    
     </div>
 </div>
 </div>
 </ng-container>
-</div>
+ </div> 

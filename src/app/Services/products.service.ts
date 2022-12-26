@@ -12,15 +12,13 @@ export class ProductsService {
 
   databaseUrl : string = 'http://localhost:5000/products'
 
-  test = {id: 6, name: "Ryzen 7", price:2145, color: "White", available: "Not Available"}
-
   getProducts(): Observable<Product[]>{
     return this.http.get<Product[]>(this.databaseUrl);
   }
 
-  addProduct(): Observable<Product>{
+/*   addProduct(): Observable<Product>{
     return this.http.post<Product>(this.databaseUrl,this.test)
-  } 
+  }  */
 
 
 }

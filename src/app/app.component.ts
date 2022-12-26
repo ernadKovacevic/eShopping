@@ -7,10 +7,8 @@ import { ProductsService } from './Services/products.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = "nesto";
+  title = "eShopping";
 
-  constructor(private productsService : ProductsService) { }
-    
   ngOnInit(): void {
     
   }
