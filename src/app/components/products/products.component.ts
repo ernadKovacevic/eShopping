@@ -15,13 +15,12 @@ export class ProductsComponent implements OnInit {
   
   index : number | null = null;
 
-  buttonDetailName = "Show Details";
-
   showDetails(id : number){
 
     if(this.index === null){
       this.index = id+1;
     }else{
+
       if(this.index != (id+1)){
         this.index = id + 1;
       }else{
@@ -29,9 +28,6 @@ export class ProductsComponent implements OnInit {
       }
        
     }
-
-    console.log(this.index);
-
   }
 
   getAllProducts(){
@@ -54,8 +50,14 @@ export class ProductsComponent implements OnInit {
     this.searchingValue = data;
   }
 
-  onBuy(){
-
+  onBuy(index : number){
+    const tempProduct = this.products.find((product)=>{
+      return product.id === (index)
+    })
+    console.log(tempProduct)
+    this.productsService.addToCart(tempProduct).subscribe(()=>{
+      alert("Product is added to Cart")
+    })
   }
 
   onNotify(){

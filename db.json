@@ -42,5 +42,21 @@
       "color": "White",
       "available": "Not Available"
     }
+  ],
+  "cart": [
+    {
+      "id": 2,
+      "name": "HD smart TV",
+      "price": 3339,
+      "color": "Black",
+      "available": "Available"
+    },
+    {
+      "id": 4,
+      "name": "LG washing machine",
+      "price": 1765,
+      "color": "White",
+      "available": "Available"
+    }
   ]
 }

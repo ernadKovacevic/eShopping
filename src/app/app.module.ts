@@ -15,6 +15,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ErrorComponent } from './components/error/error.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ErrorComponent } from './components/error/error.component';
     AboutComponent,
     ContactComponent,
     ErrorComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

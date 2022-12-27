@@ -27,7 +27,7 @@
              <ng-template #hide>
                 <button class="btn btn-success" (click)="showDetails(i)">Show Details</button>
             </ng-template> 
-            <button class="btn btn-warning" *ngIf="product.available != 'Not Available'; else notifyme" (click)="onBuy()">Buy Now</button>
+            <button class="btn btn-warning" *ngIf="product.available != 'Not Available'; else notifyme" (click)="onBuy(product.id)">Buy Now</button>
             <ng-template #notifyme>
                 <button class="btn btn-danger" (click)="onNotify()">Notify me</button>
             </ng-template>
