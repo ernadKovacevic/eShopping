@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## BACKEND
 
-Json server on port 5000, table products. (terminal command : npm run server)
+Json server on port 5000, table products. (terminal command : npm run server).
